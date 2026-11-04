@@ -38,7 +38,7 @@ const modulosData = [
     resumen: "Diseño, estructuración y control de bases de datos relacionales para la gestión segura de información.",
     herramientas: ["SQL", "MySQL", "phpMyAdmin"],
     quiz: {
-      pregunta: "¿Qué herramienta se utiliza comúnmente para administrar bases de datos en este entorno local?",
+      pregunta: "¿Qué herramienta se utiliza comúnmente para administrar bases de datos?",
       opciones: ["Microsoft Word", "phpMyAdmin", "Adobe Photoshop"],
       correcta: 1
     }
@@ -70,7 +70,7 @@ const modulosData = [
       opciones: [
         "Desarrollar una solución de software funcional",
         "Memorizar textos históricos",
-        "Realizar mantenimiento físico de cables"
+        "Realizar mantenimiento físico"
       ],
       correcta: 0
     }
