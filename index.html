@@ -27,12 +27,7 @@
             padding: 25px; 
             border-radius: 12px; 
             box-shadow: 0 8px 20px rgba(0,0,0,0.08); 
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
             border-left: 6px solid #4facfe;
-        }
-        .card:hover { 
-            transform: translateY(-4px); 
-            box-shadow: 0 12px 25px rgba(0,0,0,0.12); 
         }
         .card h3 { margin-top: 0; color: #2a5298; font-size: 1.3rem; }
         .docente { 
@@ -54,6 +49,32 @@
             display: inline-block;
             margin-bottom: 5px;
         }
+        .quiz-box {
+            margin-top: 15px;
+            padding: 15px;
+            background: #f8fafc;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+        .quiz-box p { font-weight: bold; color: #1e293b; margin-top: 0; }
+        .quiz-opcion {
+            display: block;
+            width: 100%;
+            text-align: left;
+            background: white;
+            border: 1px solid #cbd5e1;
+            padding: 8px 12px;
+            margin-bottom: 8px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .quiz-opcion:hover { background: #e2e8f0; }
+        .resultado-quiz {
+            margin-top: 8px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
     </style>
 </head>
 <body>
@@ -69,22 +90,45 @@
         
         if (typeof modulosData !== "undefined") {
             contenedor.innerHTML = "";
-            modulosData.forEach(modulo => {
+            modulosData.forEach((modulo, index) => {
                 const div = document.createElement("div");
                 div.className = "card";
                 
                 let herramientasHtml = modulo.herramientas.map(h => `<span>${h}</span>`).join("");
+                
+                let opcionesHtml = "";
+                modulo.quiz.opciones.forEach((opcion, i) => {
+                    opcionesHtml += `<button class="quiz-opcion" onclick="verificarRespuesta(${index}, ${i}, ${modulo.quiz.correcta}, 'res-${index}')">${opcion}</button>`;
+                });
                 
                 div.innerHTML = `
                     <h3>${modulo.nombre}</h3>
                     <div class="docente">👨‍🏫 Docente: ${modulo.docente}</div>
                     <p>${modulo.resumen}</p>
                     <div class="tools"><strong>Herramientas:</strong> <br>${herramientasHtml}</div>
+                    
+                    <div class="quiz-box">
+                        <p>📝 Quiz Rápido:</p>
+                        <p>${modulo.quiz.pregunta}</p>
+                        ${opcionesHtml}
+                        <div id="res-${index}" class="resultado-quiz"></div>
+                    </div>
                 `;
                 contenedor.appendChild(div);
             });
         } else {
             contenedor.innerHTML = "<p style='color: red; text-align: center;'>No se pudo cargar el archivo modulos.js</p>";
+        }
+
+        function verificarRespuesta(modIndex, opcElegida, opcCorrecta, elementoId) {
+            const resultadoDiv = document.getElementById(elementoId);
+            if (opcElegida === opcCorrecta) {
+                resultadoDiv.style.color = "#16a34a";
+                resultadoDiv.innerHTML = "¡Correcto! 🎉 Excelente respuesta.";
+            } else {
+                resultadoDiv.style.color = "#dc2626";
+                resultadoDiv.innerHTML = "Incorrecto ❌ Inténtalo de nuevo.";
+            }
         }
     </script>
 </body>
