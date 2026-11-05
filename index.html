@@ -3,149 +3,299 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HUB 3DS·B - Plataforma de Repaso 2026</title>
-   <style>
-:root{
-  --bg:#050711; --panel:rgba(15, 23, 42, 0.75); --panel2:rgba(11, 17, 36, 0.85); 
-  --line:rgba(51, 65, 122, 0.4); --line2:rgba(34, 211, 238, 0.3);
-  --tx:#f1f5f9; --mut:#94a3b8;
-  --cy:#38bdf8; --mg:#e879f9; --am:#fbbf24; --gr:#4ade80;
-  --fd:'Orbitron', system-ui, sans-serif;
-  --fb:'Exo 2', system-ui, sans-serif;
-  --fm:'JetBrains Mono', monospace;
-  color-scheme:dark;
-}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;scroll-padding-top:80px}
-body{font-family:var(--fb);background:var(--bg);color:var(--tx);line-height:1.7;font-size:16px; background-image: radial-gradient(circle at 10% 20%, rgba(56, 189, 248, 0.08) 0%, transparent 40%), radial-gradient(circle at 90% 80%, rgba(232, 121, 249, 0.06) 0%, transparent 40%); background-attachment: fixed;}
+    <title>HUB 3DS·B - Lanzamiento v1.0</title>
+    <style>
+        :root {
+            --bg: #070a15;
+            --panel: #0f1630;
+            --panel2: #0b1124;
+            --line: #222c55;
+            --line2: #33407a;
+            --tx: #e8edfb;
+            --mut: #9ba7ce;
+            --cy: #22d3ee;
+            --mg: #f046d2;
+            --am: #ffb224;
+            --gr: #34f5a0;
+        }
 
-/* Barra superior elegante con efecto vidrio difuminado */
-nav.top{position:sticky;top:0;z-index:100;background:rgba(5, 7, 17, 0.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
-nav.top .wrap{display:flex;align-items:center;gap:20px;min-height:64px;max-width:1100px;margin:0 auto;padding:0 20px}
-nav.top .marca{font-family:var(--fd);font-weight:700;font-size:14px;color:var(--cy);letter-spacing:0.5px;margin-right:auto}
-nav.top a.lnk{color:var(--mut);text-decoration:none;font-size:14px;font-weight:500;transition:color 0.2s}
-nav.top a.lnk:hover{color:var(--cy)}
+        [data-theme="light"] {
+            --bg: #f8fafc;
+            --panel: #ffffff;
+            --panel2: #f1f5f9;
+            --line: #cbd5e1;
+            --line2: #94a3b8;
+            --tx: #0f172a;
+            --mut: #475569;
+            --cy: #0284c7;
+            --mg: #c026d3;
+            --am: #d97706;
+            --gr: #059669;
+        }
 
-.btn-pdf{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#0284c7,#38bdf8);color:#fff;font:600 13px var(--fb);border:0;border-radius:10px;padding:8px 16px;cursor:pointer;box-shadow:0 4px 12px rgba(56,189,248,0.25);transition:all 0.2s}
-.btn-pdf:hover{transform:translateY(-1px);filter:brightness(1.1)}
+        * { box-sizing: border-box; }
+        body { font-family: 'Exo 2', system-ui, sans-serif; background: var(--bg); color: var(--tx); line-height: 1.6; margin: 0; padding: 0; transition: background 0.3s, color 0.3s; }
 
-/* Portada sofisticada */
-.hero{padding:70px 0 50px;border-bottom:1px solid var(--line);text-align:center;}
-.hero .wrap{max-width:850px;margin:0 auto;padding:0 20px;}
-.inst{color:var(--mut);font-size:14px;text-transform:uppercase;letter-spacing:1px;margin-bottom:16px;font-weight:600}
-h1{font-family:var(--fd);font-weight:800;font-size:clamp(32px, 5vw, 50px);line-height:1.15;background:linear-gradient(135deg,#fff 30%,var(--cy) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:20px;}
-.lead{color:var(--mut);font-size:18px;max-width:65ch;margin:0 auto 30px;}
+        nav.top { position: sticky; top: 0; z-index: 50; background: rgba(7,10,21,0.88); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+        [data-theme="light"] nav.top { background: rgba(248,250,252,0.88); }
+        nav.top .wrap { display: flex; align-items: center; gap: 15px; min-height: 56px; max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+        .marca { font-family: 'Orbitron', sans-serif; font-weight: 600; font-size: 13px; color: var(--cy); margin-right: auto; }
+        
+        .btn-tema, .btn-pdf { display: inline-flex; align-items: center; gap: 6px; background: var(--panel2); color: var(--tx); font-weight: 600; font-size: 13px; border: 1px solid var(--line); border-radius: 8px; padding: 6px 12px; cursor: pointer; }
+        .btn-tema:hover, .btn-pdf:hover { border-color: var(--cy); }
 
-/* Tarjetas y contenedores con armonía visual */
-.bloque{padding:60px 0;border-bottom:1px solid var(--line)}
-.wrap{max-width:1100px;margin:0 auto;padding:0 20px}
-h2{font-family:var(--fd);font-weight:700;font-size:clamp(22px, 3vw, 28px);margin-bottom:10px;color:#f8fafc}
-.intro{color:var(--mut);margin-bottom:35px;font-size:16px}
+        .hero { padding: 45px 0 30px; border-bottom: 1px solid var(--line); text-align: center; }
+        .wrap { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+        h1 { font-family: 'Orbitron', sans-serif; font-weight: 800; font-size: clamp(26px, 4vw, 40px); margin-bottom: 10px; color: var(--cy); }
+        .lead { color: var(--mut); font-size: 16px; max-width: 60ch; margin: 0 auto 20px; }
 
-/* Grid de módulos y misiones */
-.entregas, .logica {display:grid;grid-template-columns:repeat(auto-fit, minmax(310px, 1fr));gap:24px}
-.card, .ent, .lg, .proy{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:28px;backdrop-filter:blur(8px);box-shadow:0 10px 30px -10px rgba(0,0,0,0.5);transition:transform 0.3s, border-color 0.3s;}
-.card:hover, .ent:hover, .lg:hover{transform:translateY(-4px);border-color:var(--line2)}
+        /* Barra de Progreso Global */
+        .progreso-container { max-width: 600px; margin: 20px auto 10px auto; background: var(--panel2); border: 1px solid var(--line); border-radius: 10px; padding: 12px; }
+        .barra-fond { height: 10px; background: var(--line); border-radius: 5px; overflow: hidden; margin-top: 8px; }
+        .barra-fill { height: 100%; width: 0%; background: var(--gr); transition: width 0.3s ease; }
+        .progreso-texto { font-size: 14px; font-weight: 600; color: var(--mut); display: flex; justify-content: space-between; }
 
-/* Estilo para los botones de Quiz y Filtros */
-.btn-quiz, .chip{background:rgba(255,255,255,0.03);border:1px solid var(--line);color:var(--tx);padding:10px 16px;border-radius:10px;cursor:pointer;font-family:var(--fb);font-weight:600;transition:all 0.2s}
-.btn-quiz:hover, .chip:hover{background:rgba(56,189,248,0.1);border-color:var(--cy);color:var(--cy)}
+        /* Buscador y Filtros */
+        .controles-busqueda { max-width: 800px; margin: 25px auto; display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+        .buscador { flex: 1; min-width: 250px; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 10px 16px; color: var(--tx); font-size: 15px; font-family: inherit; }
+        .buscador:focus { outline: none; border-color: var(--cy); }
+        .filtro-btn { background: var(--panel); border: 1px solid var(--line); color: var(--mut); padding: 8px 14px; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 14px; }
+        .filtro-btn.activo { background: var(--cy); color: #04121a; border-color: var(--cy); }
 
-/* Footer profesional */
-footer{padding:40px 0 60px;text-align:center;color:var(--mut);font-size:14px;border-top:1px solid var(--line)}
-footer b{color:var(--tx)}
-</style>
+        .contador-resultados { text-align: center; color: var(--mut); font-size: 14px; margin-bottom: 20px; }
+
+        .grid { display: grid; gap: 20px; max-width: 900px; margin: 0 auto 50px auto; }
+        .card { background: var(--panel); border: 1px solid var(--line); border-top: 3px solid var(--cy); border-radius: 14px; padding: 24px; position: relative; transition: transform 0.2s; }
+        .card:hover { border-color: var(--cy); }
+        .card h3 { margin-top: 0; font-family: 'Orbitron', sans-serif; font-size: 1.2rem; color: var(--tx); }
+        
+        .docente-badge { display: inline-flex; padding: 4px 12px; border-radius: 99px; font-size: 12px; font-weight: 700; margin-bottom: 12px; }
+        .mineros { background: rgba(56, 189, 248, 0.15); color: var(--cy); border: 1px solid rgba(56, 189, 248, 0.3); }
+        .arcides { background: rgba(240, 70, 210, 0.15); color: var(--mg); border: 1px solid rgba(240, 70, 210, 0.3); }
+
+        .resumen { color: var(--mut); font-size: 15px; margin-bottom: 14px; }
+        .tools span { background: var(--panel2); border: 1px solid var(--line); padding: 3px 8px; border-radius: 6px; font-size: 13px; margin-right: 5px; display: inline-block; margin-bottom: 5px; color: var(--mut); }
+
+        /* Checkbox Repasado */
+        .repasado-box { margin-top: 15px; padding-top: 12px; border-top: 1px dashed var(--line); display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600; cursor: pointer; }
+        .repasado-box input { width: 18px; height: 18px; accent-color: var(--gr); cursor: pointer; }
+
+        .quiz-box { margin-top: 15px; background: var(--panel2); border: 1px solid var(--line); border-radius: 10px; padding: 15px; }
+        .quiz-pregunta { font-weight: 600; font-size: 14px; margin-bottom: 10px; color: var(--tx); }
+        .btn-quiz { display: block; width: 100%; text-align: left; background: var(--panel); border: 1px solid var(--line); padding: 8px 12px; margin-bottom: 6px; border-radius: 6px; color: var(--tx); cursor: pointer; font-size: 14px; }
+        .btn-quiz:hover { border-color: var(--cy); background: rgba(34,211,238,0.05); }
+        .resultado-msg { margin-top: 8px; font-weight: 700; font-size: 13px; }
+
+        .sin-resultados { text-align: center; padding: 40px; color: var(--mut); font-size: 16px; display: none; }
+        
+        footer { text-align: center; padding: 30px; color: var(--mut); font-size: 13px; border-top: 1px solid var(--line); }
+    </style>
 </head>
-<body>
+<body data-theme="dark">
 
-    <header>
-        <h1>HUB 3DS·B</h1>
-        <p>Plataforma Académica Modular — Repaso de Contenidos 2026</p>
+    <nav class="top">
+        <div class="wrap">
+            <span class="marca">HUB 3DS·B · Versión 1.0</span>
+            <button class="btn-tema" onclick="alternarTema()" id="btnTema">🌙 Modo Claro</button>
+            <button class="btn-pdf" onclick="window.print()">Descargar PDF</button>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="wrap">
+            <h1>Lanzamiento e Interactividad</h1>
+            <p class="lead">Plataforma de Repaso Integral 2026 — INDEL 3.º DS «B»</p>
+            
+            <!-- Barra de Progreso Global -->
+            <div class="progreso-container">
+                <div class="progreso-texto">
+                    <span>Progreso del Repaso</span>
+                    <span id="porcentajeTexto">0% completado</span>
+                </div>
+                <div class="barra-fond">
+                    <div class="barra-fill" id="barraFill"></div>
+                </div>
+            </div>
+        </div>
     </header>
 
-    <div class="container">
-        <div id="contenedor-modulos" class="grid">Cargando módulos...</div>
+    <div class="wrap">
+        <!-- Buscador y Filtros por Docente -->
+        <div class="controles-busqueda">
+            <input type="text" id="buscadorInput" class="buscador" placeholder="🔍 Buscar por módulo, tecnología o profesor..." oninput="filtrarModulos()">
+            <button class="filtro-btn activo" onclick="filtrarDocente('todos', this)">Todos</button>
+            <button class="filtro-btn" onclick="filtrarDocente('Javier Mineros', this)">Javier Mineros</button>
+            <button class="filtro-btn" onclick="filtrarDocente('Arcides Canales', this)">Arcides Canales</button>
+        </div>
+
+        <div class="contador-resultados" id="contadorResultados">Mostrando todos los módulos</div>
+        
+        <div id="contenedor-modulos" class="grid"></div>
+        <div id="sinResultados" class="sin-resultados">No se encontraron módulos que coincidan con tu búsqueda.</div>
     </div>
+
+    <footer>
+        <p><b>Instituto Nacional Cantón Lourdes (INDEL)</b> · 3.º Bachillerato Técnico Vocacional en Desarrollo de Software «B»</p>
+    </footer>
 
     <script src="data/modulos.js"></script>
     <script>
-        document.addEventListener("DOMContentLoaded", () => {
+        let docenteFiltroActual = 'todos';
+
+        function renderizarModulos(lista) {
             const contenedor = document.getElementById("contenedor-modulos");
-
-            if (typeof modulosData !== "undefined" && Array.isArray(modulosData)) {
+            const sinResultados = document.getElementById("sinResultados");
+            
+            if (!lista || lista.length === 0) {
                 contenedor.innerHTML = "";
-                
-                modulosData.forEach((mod, modIdx) => {
-                    const card = document.createElement("div");
-                    card.className = "card";
-
-                    let herramientasHtml = mod.herramientas.map(h => `<span>${h}</span>`).join("");
-
-                    let docenteClass = mod.docente.includes("Arcides") ? "docente-arcides" : "docente-mineros";
-
-                    let quizzesHtml = "";
-                    if (mod.quizzes && Array.isArray(mod.quizzes)) {
-                        mod.quizzes.forEach((q, qIdx) => {
-                            let opcionesHtml = q.opciones.map((opc, opcIdx) => `
-                                <button class="btn-quiz" id="btn-${modIdx}-${qIdx}-${opcIdx}" onclick="evaluarQuiz(${modIdx}, ${qIdx}, ${opcIdx}, ${q.correcta})">
-                                    ${opc}
-                                </button>
-                            `).join("");
-
-                            quizzesHtml += `
-                                <div class="quiz-item">
-                                    <div class="quiz-pregunta">Pregunta ${qIdx + 1}: ${q.pregunta}</div>
-                                    <div class="quiz-opciones" id="opciones-${modIdx}-${qIdx}">${opcionesHtml}</div>
-                                    <div id="res-${modIdx}-${qIdx}" class="resultado-msg"></div>
-                                </div>
-                            `;
-                        });
-                    }
-
-                    card.innerHTML = `
-                        <h3>${mod.nombre}</h3>
-                        <div class="docente-badge ${docenteClass}">👨‍🏫 Docente: ${mod.docente}</div>
-                        <p class="resumen">${mod.resumen}</p>
-                        
-                        <div class="tools-title">Tareas y Herramientas Asociadas</div>
-                        <div class="tools-list">${herramientasHtml}</div>
-
-                        <div class="quiz-box">
-                            <div style="font-weight: 700; color: #1e293b; margin-bottom: 12px;">📝 Cuestionario de Evaluación</div>
-                            ${quizzesHtml}
-                        </div>
-                    `;
-                    contenedor.appendChild(card);
-                });
-            } else {
-                contenedor.innerHTML = "<p style='color: red; text-align: center;'>Error al cargar el archivo modulos.js</p>";
+                sinResultados.style.display = "block";
+                document.getElementById("contadorResultados").textContent = "Mostrando 0 de 0 módulos";
+                return;
             }
-        });
+
+            sinResultados.style.display = "none";
+            document.getElementById("contadorResultados").textContent = `Mostrando ${lista.length} módulos`;
+            contenedor.innerHTML = "";
+
+            lista.forEach((mod) => {
+                // Buscar el índice original en modulosData para que el progreso y los quizzes funcionen bien con filtros
+                const originalIdx = modulosData.findIndex(m => m.id === mod.id);
+                const isArcides = mod.docente.includes("Arcides");
+                const badgeClass = isArcides ? "arcides" : "mineros";
+                const isRepasado = localStorage.getItem(`repasado_${originalIdx}`) === '1';
+
+                let herramientasHtml = mod.herramientas.map(h => `<span>${h}</span>`).join("");
+
+                let quizzesHtml = "";
+                if (mod.quizzes && Array.isArray(mod.quizzes)) {
+                    mod.quizzes.forEach((q, qIdx) => {
+                        let opcionesHtml = q.opciones.map((opc, opcIdx) => `
+                            <button class="btn-quiz" id="btn-${originalIdx}-${qIdx}-${opcIdx}" onclick="evaluarQuiz(${originalIdx}, ${qIdx}, ${opcIdx}, ${q.correcta})">
+                                ${opc}
+                            </button>
+                        `).join("");
+
+                        quizzesHtml += `
+                            <div class="quiz-item" style="margin-bottom: 10px;">
+                                <div class="quiz-pregunta"><b>Pregunta ${qIdx + 1}:</b> ${q.pregunta}</div>
+                                <div class="quiz-opciones" id="opciones-${originalIdx}-${qIdx}">${opcionesHtml}</div>
+                                <div id="res-${originalIdx}-${qIdx}" class="resultado-msg"></div>
+                            </div>
+                        `;
+                    });
+                }
+
+                const card = document.createElement("div");
+                card.className = "card";
+                card.innerHTML = `
+                    <h3>${mod.nombre}</h3>
+                    <div class="docente-badge ${badgeClass}">👨‍🏫 Docente: ${mod.docente}</div>
+                    <p class="resumen">${mod.resumen}</p>
+                    <div style="font-size: 13px; font-weight: 700; color: var(--mut); margin-bottom: 6px;">Herramientas y Tareas:</div>
+                    <div class="tools">${herramientasHtml}</div>
+
+                    <div class="quiz-box">
+                        <div style="font-weight: 700; margin-bottom: 8px; font-size: 13px; color: var(--cy);">📝 Cuestionario de Repaso</div>
+                        ${quizzesHtml}
+                    </div>
+
+                    <label class="repasado-box">
+                        <input type="checkbox" ${isRepasado ? 'checked' : ''} onchange="toggleRepasado(${originalIdx}, this)">
+                        <span>Marcar módulo como repasado</span>
+                    </label>
+                `;
+                contenedor.appendChild(card);
+            });
+            actualizarProgresoGlobal();
+        }
+
+        function filtrarModulos() {
+            const texto = document.getElementById("buscadorInput").value.toLowerCase();
+            
+            const filtrados = modulosData.filter(mod => {
+                const coincideTexto = mod.nombre.toLowerCase().includes(texto) || 
+                                      mod.resumen.toLowerCase().includes(texto) || 
+                                      mod.herramientas.some(h => h.toLowerCase().includes(texto)) ||
+                                      mod.docente.toLowerCase().includes(texto);
+                
+                const coincideDocente = docenteFiltroActual === 'todos' || mod.docente === docenteFiltroActual;
+
+                return coincideTexto && coincideDocente;
+            });
+
+            renderizarModulos(filtrados);
+        }
+
+        function filtrarDocente(docente, btnElement) {
+            docenteFiltroActual = docente;
+            document.querySelectorAll('.filtro-btn').forEach(b => b.classList.remove('activo'));
+            btnElement.classList.add('activo');
+            filtrarModulos();
+        }
+
+        function toggleRepasado(idx, checkbox) {
+            localStorage.setItem(`repasado_${idx}`, checkbox.checked ? '1' : '0');
+            actualizarProgresoGlobal();
+        }
+
+        function actualizarProgresoGlobal() {
+            if (!modulosData || modulosData.length === 0) return;
+            let repasados = 0;
+            modulosData.forEach((_, i) => {
+                if (localStorage.getItem(`repasado_${i}`) === '1') repasados++;
+            });
+            const porcentaje = Math.round((repasados / modulosData.length) * 100);
+            document.getElementById('barraFill').style.width = porcentaje + '%';
+            document.getElementById('porcentajeTexto').textContent = `${porcentaje}% completado (${repasados}/${modulosData.length})`;
+        }
 
         function evaluarQuiz(modIdx, qIdx, eleccion, correcta) {
             const resDiv = document.getElementById(`res-${modIdx}-${qIdx}`);
-            
             const totalOpciones = document.querySelectorAll(`#opciones-${modIdx}-${qIdx} .btn-quiz`);
+            
             totalOpciones.forEach((btn, i) => {
-                btn.style.background = "white";
-                btn.style.borderColor = "#e2e8f0";
-                if (i === correcta) {
-                    btn.style.borderColor = "#16a34a";
-                }
+                btn.style.background = "var(--panel)";
+                btn.style.borderColor = "var(--line)";
+                if (i === correcta) btn.style.borderColor = "var(--gr)";
             });
 
             if (eleccion === correcta) {
-                document.getElementById(`btn-${modIdx}-${qIdx}-${eleccion}`).style.background = "#dcfce7";
-                document.getElementById(`btn-${modIdx}-${qIdx}-${eleccion}`).style.borderColor = "#16a34a";
-                resDiv.style.color = "#16a34a";
-                resDiv.innerHTML = "✅ ¡Respuesta correcta!";
+                document.getElementById(`btn-${modIdx}-${qIdx}-${eleccion}`).style.background = "rgba(52, 245, 160, 0.15)";
+                document.getElementById(`btn-${modIdx}-${qIdx}-${eleccion}`).style.borderColor = "var(--gr)";
+                resDiv.style.color = "var(--gr)";
+                resDiv.innerHTML = "✅ ¡Correcto!";
             } else {
-                document.getElementById(`btn-${modIdx}-${qIdx}-${eleccion}`).style.background = "#fee2e2";
-                document.getElementById(`btn-${modIdx}-${qIdx}-${eleccion}`).style.borderColor = "#dc2626";
-                resDiv.style.color = "#dc2626";
-                resDiv.innerHTML = "❌ Respuesta incorrecta. Puedes intentar con otra opción.";
+                document.getElementById(`btn-${modIdx}-${qIdx}-${eleccion}`).style.background = "rgba(240, 70, 210, 0.15)";
+                document.getElementById(`btn-${modIdx}-${qIdx}-${eleccion}`).style.borderColor = "var(--mg)";
+                resDiv.style.color = "var(--mg)";
+                resDiv.innerHTML = "❌ Incorrecto. Puedes intentar con otra opción.";
             }
         }
+
+        function alternarTema() {
+            const body = document.body;
+            const btn = document.getElementById('btnTema');
+            if (body.getAttribute('data-theme') === 'dark') {
+                body.setAttribute('data-theme', 'light');
+                btn.textContent = "☀️ Modo Oscuro";
+                localStorage.setItem('theme', 'light');
+            } else {
+                body.setAttribute('data-theme', 'dark');
+                btn.textContent = "🌙 Modo Claro";
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        // Cargar preferencia guardada de tema
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            document.body.setAttribute('data-theme', savedTheme);
+            document.getElementById('btnTema').textContent = savedTheme === 'light' ? "☀️ Modo Oscuro" : "🌙 Modo Claro";
+            
+            if (typeof modulosData !== "undefined") {
+                renderizarModulos(modulosData);
+            }
+        });
     </script>
 </body>
 </html>
