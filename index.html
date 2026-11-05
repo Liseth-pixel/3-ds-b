@@ -3,138 +3,259 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HUB 3DS·B - Repaso 2026</title>
+    <title>HUB 3DS·B - Plataforma Educativa 2026</title>
     <style>
+        :root {
+            --primary: #4f46e5;
+            --primary-dark: #3730a3;
+            --secondary: #06b6d4;
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #475569;
+        }
+
+        * { box-sizing: border-box; }
+
         body { 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; 
             margin: 0; 
-            padding: 30px; 
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            color: #333; 
+            padding: 0; 
+            background-color: var(--bg);
+            color: var(--text-main); 
             min-height: 100vh;
         }
-        .container { max-width: 900px; margin: 0 auto; }
-        h1 { 
-            text-align: center; 
-            color: #1e3c72; 
-            margin-bottom: 30px;
-            font-size: 2.2rem;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+
+        /* Header llamativo */
+        header {
+            background: linear-gradient(135deg, #4f46e5 0%, #06b6d4 100%);
+            color: white;
+            text-align: center;
+            padding: 50px 20px;
+            box-shadow: 0 4px 20px rgba(79, 70, 229, 0.25);
         }
-        .grid { display: grid; gap: 20px; }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        header p {
+            margin-top: 10px;
+            font-size: 1.1rem;
+            opacity: 0.92;
+        }
+
+        .container { 
+            max-width: 900px; 
+            margin: -30px auto 50px auto; 
+            padding: 0 20px;
+        }
+
+        .grid { display: grid; gap: 25px; }
+
+        /* Targetas modernas */
         .card { 
-            background: white; 
-            padding: 25px; 
-            border-radius: 12px; 
-            box-shadow: 0 8px 20px rgba(0,0,0,0.08); 
-            border-left: 6px solid #4facfe;
+            background: var(--card-bg); 
+            padding: 30px; 
+            border-radius: 16px; 
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01); 
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid #e2e8f0;
+            position: relative;
+            overflow: hidden;
         }
-        .card h3 { margin-top: 0; color: #2a5298; font-size: 1.3rem; }
-        .docente { 
-            display: inline-block;
-            background: #e0f2fe;
-            color: #0369a1;
-            padding: 4px 10px;
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 6px;
+            height: 100%;
+            background: linear-gradient(to bottom, #4f46e5, #06b6d4);
+        }
+
+        .card:hover { 
+            transform: translateY(-5px); 
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.04); 
+        }
+
+        .card h3 { 
+            margin-top: 0; 
+            color: var(--text-main); 
+            font-size: 1.4rem; 
+            line-height: 1.3;
+        }
+
+        /* Badge Docente */
+        .docente-badge { 
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #e0e7ff;
+            color: #3730a3;
+            padding: 6px 14px;
             border-radius: 20px;
-            font-weight: bold;
-            font-size: 0.9rem;
-            margin-bottom: 10px;
+            font-weight: 700;
+            font-size: 0.88rem;
+            margin-bottom: 15px;
         }
-        .tools { font-size: 0.9rem; color: #555; margin-top: 10px; }
-        .tools span { 
-            background: #f1f5f9; 
-            padding: 3px 8px; 
-            border-radius: 4px; 
-            margin-right: 5px; 
-            display: inline-block;
-            margin-bottom: 5px;
+
+        .resumen {
+            color: var(--text-muted);
+            line-height: 1.6;
+            font-size: 0.98rem;
         }
-        .quiz-box {
+
+        /* Tags de herramientas */
+        .tools-title {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #64748b;
+            font-weight: 700;
             margin-top: 15px;
-            padding: 15px;
-            background: #f8fafc;
-            border-radius: 8px;
+            margin-bottom: 8px;
+        }
+
+        .tools-list span { 
+            background: #f1f5f9; 
+            color: #334155;
+            padding: 5px 12px; 
+            border-radius: 8px; 
+            margin-right: 6px; 
+            margin-bottom: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: inline-block;
             border: 1px solid #e2e8f0;
         }
-        .quiz-box p { font-weight: bold; color: #1e293b; margin-top: 0; }
-        .quiz-opcion {
-            display: block;
+
+        /* Caja interactiva de Quiz */
+        .quiz-box {
+            margin-top: 25px;
+            padding: 20px;
+            background: #f8fafc;
+            border-radius: 12px;
+            border: 1px dashed #cbd5e1;
+        }
+
+        .quiz-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 10px;
+        }
+
+        .quiz-pregunta {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #334155;
+            margin-bottom: 12px;
+        }
+
+        .quiz-opciones {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .btn-quiz {
             width: 100%;
             text-align: left;
             background: white;
-            border: 1px solid #cbd5e1;
-            padding: 8px 12px;
-            margin-bottom: 8px;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-        .quiz-opcion:hover { background: #e2e8f0; }
-        .resultado-quiz {
-            margin-top: 8px;
-            font-weight: bold;
+            border: 1.5px solid #e2e8f0;
+            padding: 10px 16px;
+            border-radius: 8px;
             font-size: 0.9rem;
+            font-weight: 500;
+            color: #334155;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-quiz:hover { 
+            border-color: #6366f1;
+            background: #eef2ff;
+            color: #4338ca;
+        }
+
+        .resultado-msg {
+            margin-top: 12px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
     </style>
 </head>
 <body>
 
+    <header>
+        <h1>HUB 3DS·B</h1>
+        <p>Plataforma Modular Educativa — Repaso 2026</p>
+    </header>
+
     <div class="container">
-        <h1>HUB 3DS·B - Módulos del Repaso 2026</h1>
         <div id="contenedor-modulos" class="grid">Cargando módulos...</div>
     </div>
 
     <script src="data/modulos.js"></script>
     <script>
-        window.addEventListener('DOMContentLoaded', () => {
+        document.addEventListener("DOMContentLoaded", () => {
             const contenedor = document.getElementById("contenedor-modulos");
-            
+
             if (typeof modulosData !== "undefined" && Array.isArray(modulosData)) {
                 contenedor.innerHTML = "";
-                modulosData.forEach((modulo, index) => {
-                    const div = document.createElement("div");
-                    div.className = "card";
-                    
-                    let herramientasHtml = "";
-                    if (modulo.herramientas && Array.isArray(modulo.herramientas)) {
-                        herramientasHtml = modulo.herramientas.map(h => `<span>${h}</span>`).join("");
-                    }
-                    
-                    let opcionesHtml = "";
-                    if (modulo.quiz && modulo.quiz.opciones) {
-                        modulo.quiz.opciones.forEach((opcion, i) => {
-                            opcionesHtml += `<button class="quiz-opcion" onclick="verificarRespuesta(${index}, ${i}, ${modulo.quiz.correcta}, 'res-${index}')">${opcion}</button>`;
-                        });
-                    }
-                    
-                    div.innerHTML = `
-                        <h3>${modulo.nombre}</h3>
-                        <div class="docente">👨‍🏫 Docente: ${modulo.docente}</div>
-                        <p>${modulo.resumen}</p>
-                        <div class="tools"><strong>Herramientas:</strong> <br>${herramientasHtml}</div>
+                
+                modulosData.forEach((mod, idx) => {
+                    const card = document.createElement("div");
+                    card.className = "card";
+
+                    let herramientasHtml = mod.herramientas.map(h => `<span>${h}</span>`).join("");
+
+                    let opcionesHtml = mod.opciones.map((opc, i) => `
+                        <button class="btn-quiz" onclick="evaluarQuiz(${idx}, ${i}, ${mod.correcta})">
+                            ${opc}
+                        </button>
+                    `).join("");
+
+                    card.innerHTML = `
+                        <h3>${mod.nombre}</h3>
+                        <div class="docente-badge">👨‍🏫 Docente: ${mod.docente}</div>
+                        <p class="resumen">${mod.resumen}</p>
                         
+                        <div class="tools-title">Tecnologías y herramientas</div>
+                        <div class="tools-list">${herramientasHtml}</div>
+
                         <div class="quiz-box">
-                            <p>📝 Quiz Rápido:</p>
-                            <p>${modulo.quiz ? modulo.quiz.pregunta : ''}</p>
-                            ${opcionesHtml}
-                            <div id="res-${index}" class="resultado-quiz"></div>
+                            <div class="quiz-header">📝 Evaluation & Quiz</div>
+                            <div class="quiz-pregunta">${mod.pregunta}</div>
+                            <div class="quiz-opciones">${opcionesHtml}</div>
+                            <div id="res-${idx}" class="resultado-msg"></div>
                         </div>
                     `;
-                    contenedor.appendChild(div);
+                    contenedor.appendChild(card);
                 });
             } else {
-                contenedor.innerHTML = "<p style='color: red; text-align: center;'>No se pudo cargar el archivo modulos.js correctamente.</p>";
+                contenedor.innerHTML = "<p style='color: red; text-align: center;'>Error al cargar modulos.js</p>";
             }
         });
 
-        function verificarRespuesta(modIndex, opcElegida, opcCorrecta, elementoId) {
-            const resultadoDiv = document.getElementById(elementoId);
-            if (opcElegida === opcCorrecta) {
-                resultadoDiv.style.color = "#16a34a";
-                resultadoDiv.innerHTML = "¡Correcto! 🎉 Excelente respuesta.";
+        function evaluarQuiz(modIdx, eleccion, correcta) {
+            const resDiv = document.getElementById(`res-${modIdx}`);
+            if (eleccion === correcta) {
+                resDiv.style.color = "#16a34a";
+                resDiv.innerHTML = "✅ ¡Respuesta Correcta! Excelente trabajo.";
             } else {
-                resultadoDiv.style.color = "#dc2626";
-                resultadoDiv.innerHTML = "Incorrecto ❌ Inténtalo de nuevo.";
+                resDiv.style.color = "#dc2626";
+                resDiv.innerHTML = "❌ Respuesta Incorrecta. Revisa el contenido e inténtalo de nuevo.";
             }
         }
     </script>
