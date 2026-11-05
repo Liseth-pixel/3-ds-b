@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HUB 3DS·B - Repaso de Classroom</title>
+    <title>HUB 3DS·B - Plataforma de Repaso 2026</title>
     <style>
         :root {
             --primary: #4f46e5;
@@ -29,25 +29,25 @@
             background: linear-gradient(135deg, #4f46e5 0%, #06b6d4 100%);
             color: white;
             text-align: center;
-            padding: 50px 20px;
+            padding: 45px 20px;
             box-shadow: 0 4px 20px rgba(79, 70, 229, 0.25);
         }
 
         header h1 {
             margin: 0;
-            font-size: 2.5rem;
+            font-size: 2.4rem;
             font-weight: 800;
         }
 
         header p {
-            margin-top: 10px;
-            font-size: 1.1rem;
+            margin-top: 8px;
+            font-size: 1.05rem;
             opacity: 0.92;
         }
 
         .container { 
             max-width: 900px; 
-            margin: -30px auto 50px auto; 
+            margin: -25px auto 50px auto; 
             padding: 0 20px;
         }
 
@@ -55,7 +55,7 @@
 
         .card { 
             background: var(--card-bg); 
-            padding: 30px; 
+            padding: 28px; 
             border-radius: 16px; 
             box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05); 
             border: 1px solid #e2e8f0;
@@ -76,15 +76,15 @@
         .card h3 { 
             margin-top: 0; 
             color: var(--text-main); 
-            font-size: 1.4rem; 
+            font-size: 1.35rem; 
+            line-height: 1.3;
         }
 
+        /* Estilos diferenciados por docente */
         .docente-badge { 
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            background: #e0e7ff;
-            color: #3730a3;
             padding: 6px 14px;
             border-radius: 20px;
             font-weight: 700;
@@ -92,14 +92,24 @@
             margin-bottom: 15px;
         }
 
+        .docente-mineros {
+            background: #e0e7ff;
+            color: #3730a3;
+        }
+
+        .docente-arcides {
+            background: #e0f2fe;
+            color: #0369a1;
+        }
+
         .resumen {
             color: var(--text-muted);
             line-height: 1.6;
-            font-size: 0.98rem;
+            font-size: 0.95rem;
         }
 
         .tools-title {
-            font-size: 0.85rem;
+            font-size: 0.82rem;
             text-transform: uppercase;
             letter-spacing: 0.05em;
             color: #64748b;
@@ -185,7 +195,7 @@
 
     <header>
         <h1>HUB 3DS·B</h1>
-        <p>Plataforma Modular — Información y Quizzes Oficiales de Classroom</p>
+        <p>Plataforma Académica Modular — Repaso de Contenidos 2026</p>
     </header>
 
     <div class="container">
@@ -206,47 +216,50 @@
 
                     let herramientasHtml = mod.herramientas.map(h => `<span>${h}</span>`).join("");
 
-                    let quizzesHtml = "";
-                    mod.quizzes.forEach((q, qIdx) => {
-                        let opcionesHtml = q.opciones.map((opc, opcIdx) => `
-                            <button class="btn-quiz" id="btn-${modIdx}-${qIdx}-${opcIdx}" onclick="evaluarQuiz(${modIdx}, ${qIdx}, ${opcIdx}, ${q.correcta})">
-                                ${opc}
-                            </button>
-                        `).join("");
+                    let docenteClass = mod.docente.includes("Arcides") ? "docente-arcides" : "docente-mineros";
 
-                        quizzesHtml += `
-                            <div class="quiz-item">
-                                <div class="quiz-pregunta">Pregunta ${qIdx + 1}: ${q.pregunta}</div>
-                                <div class="quiz-opciones" id="opciones-${modIdx}-${qIdx}">${opcionesHtml}</div>
-                                <div id="res-${modIdx}-${qIdx}" class="resultado-msg"></div>
-                            </div>
-                        `;
-                    });
+                    let quizzesHtml = "";
+                    if (mod.quizzes && Array.isArray(mod.quizzes)) {
+                        mod.quizzes.forEach((q, qIdx) => {
+                            let opcionesHtml = q.opciones.map((opc, opcIdx) => `
+                                <button class="btn-quiz" id="btn-${modIdx}-${qIdx}-${opcIdx}" onclick="evaluarQuiz(${modIdx}, ${qIdx}, ${opcIdx}, ${q.correcta})">
+                                    ${opc}
+                                </button>
+                            `).join("");
+
+                            quizzesHtml += `
+                                <div class="quiz-item">
+                                    <div class="quiz-pregunta">Pregunta ${qIdx + 1}: ${q.pregunta}</div>
+                                    <div class="quiz-opciones" id="opciones-${modIdx}-${qIdx}">${opcionesHtml}</div>
+                                    <div id="res-${modIdx}-${qIdx}" class="resultado-msg"></div>
+                                </div>
+                            `;
+                        });
+                    }
 
                     card.innerHTML = `
                         <h3>${mod.nombre}</h3>
-                        <div class="docente-badge">👨‍🏫 Docente: ${mod.docente}</div>
+                        <div class="docente-badge ${docenteClass}">👨‍🏫 Docente: ${mod.docente}</div>
                         <p class="resumen">${mod.resumen}</p>
                         
                         <div class="tools-title">Tareas y Herramientas Asociadas</div>
                         <div class="tools-list">${herramientasHtml}</div>
 
                         <div class="quiz-box">
-                            <div style="font-weight: 700; color: #1e293b; margin-bottom: 12px;">📝 Quizzes de Repaso del Módulo</div>
+                            <div style="font-weight: 700; color: #1e293b; margin-bottom: 12px;">📝 Cuestionario de Evaluación</div>
                             ${quizzesHtml}
                         </div>
                     `;
                     contenedor.appendChild(card);
                 });
             } else {
-                contenedor.innerHTML = "<p style='color: red; text-align: center;'>Error al cargar modulos.js</p>";
+                contenedor.innerHTML = "<p style='color: red; text-align: center;'>Error al cargar el archivo modulos.js</p>";
             }
         });
 
         function evaluarQuiz(modIdx, qIdx, eleccion, correcta) {
             const resDiv = document.getElementById(`res-${modIdx}-${qIdx}`);
             
-            // Restablecer colores de botones de esta pregunta específica
             const totalOpciones = document.querySelectorAll(`#opciones-${modIdx}-${qIdx} .btn-quiz`);
             totalOpciones.forEach((btn, i) => {
                 btn.style.background = "white";
@@ -260,12 +273,12 @@
                 document.getElementById(`btn-${modIdx}-${qIdx}-${eleccion}`).style.background = "#dcfce7";
                 document.getElementById(`btn-${modIdx}-${qIdx}-${eleccion}`).style.borderColor = "#16a34a";
                 resDiv.style.color = "#16a34a";
-                resDiv.innerHTML = "✅ ¡Correcto!";
+                resDiv.innerHTML = "✅ ¡Respuesta correcta!";
             } else {
                 document.getElementById(`btn-${modIdx}-${qIdx}-${eleccion}`).style.background = "#fee2e2";
                 document.getElementById(`btn-${modIdx}-${qIdx}-${eleccion}`).style.borderColor = "#dc2626";
                 resDiv.style.color = "#dc2626";
-                resDiv.innerHTML = "❌ Incorrecto. Puedes intentar con otra opción.";
+                resDiv.innerHTML = "❌ Respuesta incorrecta. Puedes intentar con otra opción.";
             }
         }
     </script>
