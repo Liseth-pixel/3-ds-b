@@ -14,15 +14,6 @@ const modulosData = [
           "Configurar servidores Apache con XAMPP"
         ],
         correcta: 0
-      },
-      {
-        pregunta: "¿Qué fecha límite se estableció para las entregas de tareas iniciales como el portafolio?",
-        opciones: [
-          "12 de febrero",
-          "30 de octubre",
-          "1 de diciembre"
-        ],
-        correcta: 0
       }
     ]
   },
@@ -47,8 +38,8 @@ const modulosData = [
   {
     id: 3,
     nombre: "Módulo 3.3: Administración de Bases de Datos",
-    docente: "Javier Mineros",
-    resumen: "Gestión de bases de datos, actividades de Power BI, fases de planificación y ejecución de dashboards y proyectos finales (incluyendo actividades remediales y recuperación).",
+    docente: "Arcides Canales",
+    resumen: "Gestión de bases de datos, actividades de Power BI, fases de planificación y ejecución de dashboards y proyectos finales.",
     herramientas: ["Power BI", "SQL", "Dashboards", "XAMPP", "phpMyAdmin"],
     quizzes: [
       {
@@ -59,24 +50,14 @@ const modulosData = [
           "Programas de diseño de modas"
         ],
         correcta: 0
-      },
-      {
-        pregunta: "¿Qué tipo de ejecuciones y entregas se realizaron junto a los dashboards?",
-        opciones: [
-          "Ejecutar fases de proyecto final y actividades remediales",
-          "Instalación de redes eléctricas residenciales",
-          "Edición de audio digital"
-        ],
-        correcta: 0
       }
     ]
   },
   {
     id: 4,
     nombre: "Módulo 3.4: Elaboración de documentación de Sistemas informáticos",
-    docente: "Módulo con Guías Python y Fases de Arquitectura",
-    docente: "Javier Mineros",
-    resumen: "Desarrollo de guías en Python (individual y creaciones de apps), arquitectura de software dividida en fases (Fase 1 a Fase 7), y redacción de manuales y documentos finales.",
+    docente: "Arcides Canales",
+    resumen: "Desarrollo de guías en Python, arquitectura de software dividida en fases (Fase 1 a Fase 7), y redacción de manuales y documentos finales.",
     herramientas: ["Python", "Markdown", "Arquitectura de Software", "Documentación técnica"],
     quizzes: [
       {
@@ -87,15 +68,6 @@ const modulosData = [
           "Edición de audio multicanal"
         ],
         correcta: 0
-      },
-      {
-        pregunta: "¿Cómo se estructuró el desarrollo del software en este módulo?",
-        opciones: [
-          "Mediante fases progresivas (desde la Fase 1 hasta la Fase 7)",
-          "Mediante un único examen teórico escrito",
-          "Con la creación de un sistema operativo desde cero"
-        ],
-        correcta: 0
       }
     ]
   },
@@ -103,7 +75,7 @@ const modulosData = [
     id: 5,
     nombre: "Módulo 3.8: Proyecto innovador de Desarrollo de Software",
     docente: "Javier Mineros",
-    resumen: "Desarrollo integral de proyectos de software, manuales de sistema, avances con entregas parciales (10%, 15%), exposiciones y defensa de la aplicación final.",
+    resumen: "Desarrollo integral de proyectos de software, manuales de sistema, avances con entregas parciales, exposiciones y defensa de la aplicación final.",
     herramientas: ["React Native", "PHP", "C#", "Supabase", "Git / GitHub"],
     quizzes: [
       {
@@ -114,13 +86,76 @@ const modulosData = [
           "Pruebas de redacción literaria"
         ],
         correcta: 0
-      },
+      }
+    ]
+  },
+  {
+    id: 6,
+    nombre: "Modulo 4: Puesta en marcha de la empresa en asociatividad cooperativa",
+    docente: "Arcides Canales",
+    resumen: "Desarrollo de proyectos empresariales y técnicos: Proyecto Augustine-Arduino, WinForms y ASPX, desarrollo en .NET MAUI y tienda virtual con PrestaShop.",
+    herramientas: ["Arduino", "WinForms", "ASPX", ".NET MAUI", "PrestaShop"],
+    quizzes: [
       {
-        pregunta: "¿Qué herramientas o tecnologías se utilizaron en el desarrollo de software de este proyecto?",
+        pregunta: "¿Qué plataforma de e-commerce se trabajó de forma individual en este módulo?",
         opciones: [
-          "React Native, PHP, C# y Supabase",
-          "Microsoft Word y Paint",
-          "Calculadoras científicas"
+          "PrestaShop",
+          "WordPress básico",
+          "Excel avanzado"
+        ],
+        correcta: 0
+      }
+    ]
+  },
+  {
+    id: 7,
+    nombre: "Modulo 3: Conversación de inglés sobre mantenimiento de sistemas informáticos",
+    docente: "Arcides Canales",
+    resumen: "Prácticas de bases de datos conectadas con IA y gestión de metodologías ágiles orientadas al mantenimiento informático.",
+    herramientas: ["CRUD con IA", "Scrum", "Inglés técnico"],
+    quizzes: [
+      {
+        pregunta: "¿Qué metodología ágil se abordó en la Práctica 10 de este módulo?",
+        opciones: [
+          "Scrum",
+          "Cascada tradicional",
+          "Lego Technic"
+        ],
+        correcta: 0
+      }
+    ]
+  },
+  {
+    id: 8,
+    nombre: "Modulo 2: Desarrollo de componentes para dispositivos móviles",
+    docente: "Arcides Canales",
+    resumen: "Creación y autoevaluación de prácticas móviles avanzadas utilizando tecnologías multiplataforma orientadas a dispositivos móviles.",
+    herramientas: [".NET MAUI", "Prácticas móviles", "Componentes UI"],
+    quizzes: [
+      {
+        pregunta: "¿Qué tecnología multiplataforma se empleó de manera reiterada en las prácticas (Práctica 7, 8, 9)?",
+        opciones: [
+          ".NET MAUI",
+          "Ensamblador",
+          "COBOL"
+        ],
+        correcta: 0
+      }
+    ]
+  },
+  {
+    id: 9,
+    nombre: "BTVDS 3.1: Desarrollo de aplicaciones de software para la solución de problemas",
+    docente: "Arcides Canales",
+    resumen: "Programación Orientada a Objetos (POO), herencia, polimorfismo, acceso a datos, Code First con ASP.NET Razor y conexiones con interfaces gráficas.",
+    herramientas: ["POO", "C#", "ASP.NET Razor", "Code First", "SQL Server"],
+    quizzes: [
+      {
+        pregunta: "¿Qué conceptos fundamentales de la programación se evaluaron en las prácticas iniciales (Práctica 1 y 2)?",
+        opciones: [
+          "POO, Herencia y Polimorfismo",
+          "Diseño de modas y patronaje",
+          "Mantenimiento de redes físicas"
         ],
         correcta: 0
       }
